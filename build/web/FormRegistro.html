@@ -87,15 +87,23 @@ button {
     <body>
         <div>
           
-             <form action="RecibiendoDatos.jsp">
+            <form action="RecibiendoDatos.jsp" method="POST">
                 <ul>
                  <li>
                    <label for="name">Nombre:</label>
                    <input type="text" id="name" name="user_name">
                  </li>
                  <li>
+                   <label for="name">Apellido</label>
+                   <input type="text" id="apellido" name="user_apellido">
+                 </li>
+                 <li>
                    <label for="mail">Correo electrónico:</label>
                    <input type="email" id="mail" name="user_mail">
+                 </li>
+                  <li>
+                   <label for="contra">Contraseña:</label>
+                   <input type="password" id="contra" name="user_password">
                  </li>
                  <li>
                      <input type="submit" value="enviar" name="enviar" id="enviar">

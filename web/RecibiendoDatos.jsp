@@ -8,11 +8,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>nombre: <%=  request.getParameter("user_name") %></h1>
-        <h1>e-mail <%=  request.getParameter("user_mail") %></h1>
+         <%  
+            String nombreUser= request.getParameter("user_name");
+            String apellidoUser= request.getParameter("user_apellido");
+            String password= request.getParameter("user_password");
+            String correo= request.getParameter("user_mail");
+            
+                    out.print(nombreUser);
+                    out.print(apellidoUser);
+                    out.print(password);
+                    out.print(correo);
+             
+         %>
     </body>
 </html>
