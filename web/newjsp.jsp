@@ -30,5 +30,8 @@
                 <td><%= Calculos.mutiplica(1, 4) %></td>
             </tr>
         </table>
+            
+                <h3>detalles navegador: <%= request.getHeader("user-agent") %> </h3>
+                <h3>idioma navegador: <%= request.getLocale() %> </h3>
     </body>
 </html>
