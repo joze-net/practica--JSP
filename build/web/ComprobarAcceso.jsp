@@ -15,24 +15,26 @@
     <body>
          <%  
             String nombreUser= request.getParameter("user_name");//con getparameter obtenemos los datos especificos que nos envia una pagina de ub form
-            String apellidoUser= request.getParameter("user_apellido");
             String password= request.getParameter("user_password");
-            String correo= request.getParameter("user_mail");
             
-                    out.print(nombreUser);
-                    out.print(apellidoUser);
-                    out.print(password);
-                    out.print(correo);
+                   
                     
                       //   Class.forName("com.mysql.jdbc.Driver"); tambien me funciona sin esta linea de codigo
                     try{
                     Connection  conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/usuarios?zeroDateTimeBehavior=convertToNull","root","1234");
 
-                    Statement sentencia=conexion.createStatement();
+                    PreparedStatement st=conexion.prepareStatement("select * from users where user_nombre=? and user_password=?");//creamos la consulta perparada
+                    st.setString(1, nombreUser);//llenamos los parametros de la conulta preparada
+                    st.setString(2, password);
                     
-                    String instruccionSQL="Insert into users(user_nombre,user_apellido,user_password,user_mail)values('"+nombreUser+"','"+apellidoUser+"','"+password+"','"+correo+"')";
+                    ResultSet r=st.executeQuery();//ejecuttamos la consulta y gurdamos lo datos en un ResultSet
                     
-                    sentencia.executeUpdate(instruccionSQL);
+                    if(r.absolute(1)){
+                        out.print("Uusario validado correctmente");
+                    }else{
+                        out.print("usuario invalido");
+                    }
+                   
                     }catch(Exception e){
                         out.print(e+" linea: ");
                     }
@@ -40,3 +42,4 @@
          %>
     </body>
 </html>
+

@@ -24,7 +24,7 @@
                     out.print(password);
                     out.print(correo);
                     
-                         Class.forName("com.mysql.jdbc.Driver");
+                      //   Class.forName("com.mysql.jdbc.Driver"); tambien me funciona sin esta linea de codigo
                     try{
                     Connection  conexion= DriverManager.getConnection("jdbc:mysql://localhost:3306/usuarios?zeroDateTimeBehavior=convertToNull","root","1234");
 
